@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { NotFoundError } from 'rxjs';
 import { Board } from './board.entity';
 import { BoardRepository } from './board.repository';
+import { CreateBoardDto } from './dto/create-board.dto';
 
 @Injectable()
 export class BoardService {
@@ -25,5 +26,9 @@ export class BoardService {
         // query.where('board');
         const boards = await query.getMany();
         return boards;
+    }
+
+    createBorad(createBoardDto: CreateBoardDto):Promise<Board>{
+        return this.boardRepository.createBoard(createBoardDto);
     }
 }
