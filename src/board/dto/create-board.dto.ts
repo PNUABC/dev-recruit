@@ -13,7 +13,7 @@ export class CreateBoardDto{
     @IsNotEmpty()
     companyAddress: string;
     
-    @IsNotEmpty()
-    expireDate: Date;
+    // @IsNotEmpty()
+    // expireDate: Date;
 
 }
