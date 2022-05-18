@@ -1,6 +1,7 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Board } from './board.entity';
 import { BoardService } from './board.service';
+import { CreateBoardDto } from './dto/create-board.dto';
 
 @Controller('board')
 export class BoardController {
@@ -14,5 +15,12 @@ export class BoardController {
     @Get()
     getAllBoards():Promise<Board[]>{
         return this.boardService.getAllBoards();
+    }
+
+    @Post()
+    createBoard(
+        @Body() CreateBoardDto: CreateBoardDto
+    ):Promise<Board>{
+        return this.boardService.createBorad(CreateBoardDto);
     }
 }
