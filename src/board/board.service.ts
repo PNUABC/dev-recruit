@@ -37,4 +37,11 @@ export class BoardService {
             throw new NotFoundException(`Can't find board id : ${id}`);
         }
     }
+
+    async updateBoard(id:number, recruitDescription: string) :Promise<Board>{
+        const board = await this.getBoardById(id);
+        board.recruitDescription = recruitDescription;
+        await this.boardRepository.save(board);
+        return board;
+    }
 }
