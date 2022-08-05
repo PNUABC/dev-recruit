@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/commo
 import { Board } from './board.entity';
 import { BoardService } from './board.service';
 import { CreateBoardDto } from './dto/create-board.dto';
+import { UpdateBoardDto } from './dto/update-board.dto';
 
 @Controller('board')
 export class BoardController {
@@ -29,8 +30,8 @@ export class BoardController {
         return this.boardService.deleteBoard(id);
     }
 
-    @Patch('/:id/recruitDescription')
-    updateBoardRecruitDescription(@Param('id') id: number, @Body('recruitDescription') recruitDescription: string){
-        return this.boardService.updateBoard(id, recruitDescription);
+    @Patch('/:id')
+    updateBoard(@Param('id') id: number, @Body() updateData: UpdateBoardDto){
+        return this.boardService.updateBoard(id, updateData);
     }
 }
