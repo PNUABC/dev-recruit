@@ -4,6 +4,7 @@ import { NotFoundError } from 'rxjs';
 import { Board } from './board.entity';
 import { BoardRepository } from './board.repository';
 import { CreateBoardDto } from './dto/create-board.dto';
+import { UpdateBoardDto } from './dto/update-board.dto';
 
 @Injectable()
 export class BoardService {
@@ -38,10 +39,9 @@ export class BoardService {
         }
     }
 
-    async updateBoard(id:number, recruitDescription: string) :Promise<Board>{
-        const board = await this.getBoardById(id);
-        board.recruitDescription = recruitDescription;
-        await this.boardRepository.save(board);
-        return board;
+    async updateBoard(id:number, updateData: UpdateBoardDto) :Promise<Board>{
+        // const board = await this.getBoardById(id);
+        await this.boardRepository.update(id, updateData);
+        return await this.getBoardById(id);
     }
 }
