@@ -5,6 +5,9 @@ export class CreateBoardDto{
     companyName: string;
     
     @IsNotEmpty()
+    jobPosition: string;
+    
+    @IsNotEmpty()
     recruitTitle: string;
     
     @IsNotEmpty()
@@ -12,6 +15,7 @@ export class CreateBoardDto{
     
     @IsNotEmpty()
     companyAddress: string;
+
     
     // @IsNotEmpty()
     // expireDate: Date;

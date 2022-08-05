@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { type } from "os";
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Board extends BaseEntity{
@@ -7,25 +8,13 @@ export class Board extends BaseEntity{
     @PrimaryGeneratedColumn()
     id: number;
 
-    // // 생성일자
-    // @Column()
-    // createDate: Date;
-    
-    // // 업데이트일자
-    // @Column()
-    // updateDate:Date;
-    
-    // // 마감일자
-    // @Column()
-    // expireDate: Date;
-
     // 회사명
     @Column()
     companyName: string;
         
     // // 직종
-    // @Column()
-    // jobPosition: string;
+    @Column({default: "developer"})
+    jobPosition: string;
     
     // 공고제목
     @Column()
@@ -38,6 +27,22 @@ export class Board extends BaseEntity{
     // 회사주소
     @Column()
     companyAddress: string;
+
+    // // 시작일자
+    // @Column({type: 'datetime'})
+    // startDate: Date;
+    
+    // // 마감일자
+    // @Column({type: 'datetime'})
+    // expireDate: Date;
+    
+    // 생성일자
+    @CreateDateColumn({type: 'timestamptz'})
+    createDate:Date;
+
+    // 업데이트일자
+    @UpdateDateColumn({type: 'timestamptz'})
+    updateDate:Date;
     
     // 공고사진
 
