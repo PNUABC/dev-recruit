@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { NotFoundError } from 'rxjs';
+import { User } from 'src/user/user.entity';
 import { Board } from './board.entity';
 import { BoardRepository } from './board.repository';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -28,8 +29,8 @@ export class BoardService {
         return boards;
     }
 
-    createBorad(createBoardDto: CreateBoardDto):Promise<Board>{
-        return this.boardRepository.createBoard(createBoardDto);
+    createBorad(createBoardDto: CreateBoardDto, user: User):Promise<Board>{
+        return this.boardRepository.createBoard(createBoardDto, user);
     }
 
     async deleteBoard(id:number): Promise<void>{
