@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, IsString } from "class-validator";
-import { LogInUserDto } from "./login_user.dto";
+import { LogInUserDto } from "./login-user.dto";
 
 export class CreateUserDto extends LogInUserDto{
     @IsString()

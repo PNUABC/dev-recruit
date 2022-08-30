@@ -1,5 +1,5 @@
-import { type } from "os";
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { User } from "src/user/user.entity";
+import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Board extends BaseEntity{
@@ -46,4 +46,7 @@ export class Board extends BaseEntity{
     
     // 공고사진
 
+
+    @ManyToOne(type=>User, (user)=>user.boards, {eager:false})
+    user: User;
 }

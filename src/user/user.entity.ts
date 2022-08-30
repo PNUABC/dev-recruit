@@ -22,7 +22,7 @@ export class User extends BaseEntity{
     
     
     
-    // @OneToMany(()=> Board, (board)=>board.id)
-    // boardId: Board[];
+    @OneToMany(type=> Board, (board)=>board.user, {eager:true})
+    boards: Board[];
     
 }
